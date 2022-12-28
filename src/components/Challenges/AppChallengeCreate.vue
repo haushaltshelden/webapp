@@ -1,11 +1,17 @@
 <template>
-  <div>
-    <div>Haushalt erstellen:</div>
+  <div class="m-3">
+    <div>Aufgabe erstellen:</div>
     <form @submit.prevent="onSubmit">
       <input
         type="text"
-        placeholder="Name des Haushalts"
+        placeholder="Name der Aufgabe"
         v-model="name"
+        class="mr-2 mt-2 border-2 border-hh-darkred bg-secondary p-1 pl-2"
+      />
+      <input
+        type="number"
+        placeholder="Punkte"
+        v-model="points"
         class="mr-2 mt-2 border-2 border-hh-darkred bg-secondary p-1 pl-2"
       />
       <AppButton class="" @click="btnClicked">Erstellen</AppButton>
@@ -16,26 +22,28 @@
 <script setup>
 import { ref } from 'vue';
 import apolloClient from '@/plugins/apollo';
-import { createHousehold } from '@/apollo/mutations';
+import { createChallenge } from '@/apollo/mutations';
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '@/stores/user';
 
 import AppButton from '../General/AppButton.vue';
 
 const name = ref('');
+const points = ref(0)
+
+const emit = defineEmits(['challengeCreated'])
 
 const btnClicked = async () => {
-  const { user } = storeToRefs(useUserStore());
-
   const {data} = await apolloClient.mutate({
-    mutation: createHousehold,
+    mutation: createChallenge,
     variables: {
       name: name.value,
+      points: points.value
     },
   });
 
-  if (data.createHousehold.success) {
-    user.value.household = 'test'
+  if (data.createChallenge.success) {
+    emit('challengeCreated')
   }
 };
 </script>

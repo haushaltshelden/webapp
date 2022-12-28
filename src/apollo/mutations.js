@@ -53,3 +53,43 @@ export const leaveHousehold = gql`
     }
   }
 `;
+
+export const createChallenge = gql`
+  mutation createChallenge($name: String!, $points: Int!) {
+    createChallenge(name: $name, points: $points) {
+      msg
+      code
+      success
+    }
+  }
+`;
+
+export const completeChallenge = gql`
+  mutation completeChallenge($id: ID!) {
+    completeChallenge(id: $id) {
+      msg
+      code
+      success
+    }
+  }
+`;
+
+export const createReward = gql`
+  mutation createReward($name: String!, $costs: Int!) {
+    createReward(name: $name, costs: $costs) {
+      msg
+      code
+      success
+    }
+  }
+`;
+
+export const collectReward = gql`
+  mutation collectReward($id: ID!) {
+    collectReward(id: $id) {
+      msg
+      code
+      success
+    }
+  }
+`;

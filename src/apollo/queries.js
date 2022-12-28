@@ -28,3 +28,24 @@ export const getMyHousehold = gql`
     }
   }
 `
+
+export const getChallenges = gql`
+  query {
+    getChallenges {
+      name
+      points
+      last_done
+      _id
+    }
+  }
+`
+
+export const getRewards = gql`
+  query {
+    getRewards {
+      name
+      costs
+      _id
+    }
+  }
+`

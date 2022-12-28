@@ -1,10 +1,10 @@
 <template>
-  <div class="mb-12 bg-primary min-h-[93.5vh]">
+  <div class="mb-12 bg-primary min-h-[94.3vh]">
     <AppOverview v-if="currentPage === 'overview'"/>
     <AppChallenges v-if="currentPage === 'challenges'" />
     <AppRewards v-if="currentPage === 'rewards'" />
   </div>
-  <AppHeader class="mt-"/>
+  <AppHeader class="max-w-[800px] min-w-[300px]"/>
 </template>
 
 <script setup>

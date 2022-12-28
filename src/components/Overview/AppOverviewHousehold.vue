@@ -11,7 +11,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
 import apolloClient from '@/plugins/apollo';
 import { joinHousehold } from '@/apollo/mutations';
 import { useUserStore } from '@/stores/user';
