@@ -4,25 +4,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': '#CDBD9B',
-        'secondary': "#EDDDBC",
-        "brown": {
-          DEFAULT: "#6A1C18",
-          light: "#A60701",
-          medium: "#7C4027",
-          veryLight: "#DDCCA5",
-        },
-        tok: {
-          100: "#EDDDBC",
-          200: "#DDCCA5",
-          300: "#CDBD9B",
-          500: "#A60701",
-          700: "#6A1C18",
-          900: "#7C4027"
+        'primary': '#2B303A',
+        'secondary': "#4F565A",
+        hh: {
+          'grey': '#ABACA7',
+          'red':  '#FE4A49',
+          'darkred': '#D64045'
         }
       },
       fontFamily: {
-        wishbone: ["Wishbone"]
+        'inter': ['Inter']
       }
     },
   },

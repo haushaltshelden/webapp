@@ -8,3 +8,23 @@ export const myUser = gql`
     }
   }
 `;
+
+export const getHouseholds = gql`
+  query {
+    getHouseholds {
+      name
+      membercount
+      _id
+    }
+  }
+`
+
+export const getMyHousehold = gql`
+  query {
+    getMyHousehold {
+      name
+      membercount
+      _id
+    }
+  }
+`

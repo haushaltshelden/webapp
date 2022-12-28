@@ -1,3 +1,7 @@
 <template>
-  <button class="mt-3 bg-brown p-1 px-2 rounded shadow-xl font-bold hover:bg-brown-medium text-brown-veryLight"><slot /></button>
+   <button
+      class="bg-secondary border-hh-darkred hover:bg-hh-darkred mt-3 rounded border-2 p-1 font-bold text-white shadow-xl"
+   >
+      <slot />
+   </button>
 </template>

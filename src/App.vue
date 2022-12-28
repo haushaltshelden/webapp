@@ -1,12 +1,11 @@
 <template>
   <Suspense>
     <div
-      class="text-brown bg-primary h-screen font-wishbone"
+      class="text-white bg-primary font-inter"
     >
-      <div class="h-[100vh]" style="background-color: rgba(1, 1, 1, 0.0)">
+      <div class="" style="background-color: rgba(1, 1, 1, 0.0)">
         <AppLoginForm v-if="!loggedIn" />
-        <AppDashboard v-else>
-        </AppDashboard>
+        <AppDashboard v-else />
         <AppError v-if="message" />
       </div>
     </div>

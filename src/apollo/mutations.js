@@ -15,15 +15,41 @@ export const loginUser = gql`
 `;
 
 export const createUser = gql`
-  mutation CreateUser(
-    $username: String!
-    $password: String!
-    $email: String!
-  ) {
+  mutation CreateUser($username: String!, $password: String!, $email: String!) {
     createUser(name: $username, password: $password, email: $email) {
       msg
       code
       success
     }
   }
-`
+`;
+
+export const createHousehold = gql`
+  mutation createHousehold($name: String!) {
+    createHousehold(name: $name) {
+      msg
+      code
+      success
+    }
+  }
+`;
+
+export const joinHousehold = gql`
+  mutation joinHousehold($id: ID!) {
+    joinHousehold(id: $id) {
+      msg
+      code
+      success
+    }
+  }
+`;
+
+export const leaveHousehold = gql`
+  mutation leaveHousehold {
+    leaveHousehold {
+      msg
+      code
+      success
+    }
+  }
+`;

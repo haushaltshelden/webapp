@@ -1,30 +1,30 @@
-<template lang="">
-  <div>
+<template>
+  <div class="min-h-screen">
     <div class="flex justify-center" v-if="!register || registrationSuccess">
       <form
         @submit.prevent="onSubmit"
-        class="p-4 bg-secondary border-brown-medium border-4 shadow-2xl mt-10"
+        class="p-4 bg-primary border-hh-darkred border-4 shadow-2xl mt-10"
       >
         <input
           type="text"
           placeholder="Benutzername"
           v-model="username"
-          class="bg-secondary w-36 p-1 mr-2 border-2 border-brown-medium placeholder-brown-medium font-semibold rounded"
+          class="bg-secondary w-36 p-1 mr-2 border-2 border-hh-darkred placeholder-hh-darkred font-semibold rounded"
         />
 
         <input
           type="password"
           placeholder="Passwort"
           v-model="password"
-          class="bg-secondary w-36 p-1 mr-2 border-2 border-brown-medium placeholder-brown-medium font-semibold rounded"
+          class="bg-secondary w-36 p-1 mr-2 border-2 border-hh-darkred placeholder-hh-darkred font-semibold rounded"
         /><br />
 
         <div class="border-green-700 border-2 bg-primary font-bold text-sm mt-3" v-if="registrationSuccess">
           Account erfolgreich registriert!
         </div>
 
-        <AppButton @click="loginBtnClicked">Einloggen</AppButton>
-        <AppButton @click="registerUserForm" class="ml-3">Account erstellen</AppButton>
+        <AppButton @click="loginBtnClicked" class="bg-secondary">Einloggen</AppButton>
+        <AppButton @click="registerUserForm" class="ml-3 bg-secondary">Account erstellen</AppButton>
         <div class="mt-2">Passwort vergessen</div>
       </form>
       <!-- <div v-if="error">Etwas ging schief</div> -->
@@ -32,27 +32,27 @@
     <div class="flex justify-center" v-else>
       <form
         @submit.prevent="onSubmit"
-        class="p-4 bg-secondary border-brown-medium border-4 shadow-2xl"
+        class="p-4 bg-primary border-hh-darkred border-4 shadow-2xl mt-10"
       >
         <input
           type="text"
           placeholder="Benutzername"
           v-model="username"
-          class="bg-secondary w-36 p-1 mr-2 border-2 border-brown-medium placeholder-brown-medium font-semibold rounded"
+          class="bg-secondary w-36 p-1 mr-2 border-2 border-hh-darkred placeholder-hh-darkred font-semibold rounded"
         />
 
         <input
           type="password"
           placeholder="Passwort"
           v-model="password"
-          class="bg-secondary w-36 p-1 mr-2 border-2 border-brown-medium placeholder-brown-medium font-semibold rounded"
+          class="bg-secondary w-36 p-1 mr-2 border-2 border-hh-darkred placeholder-hh-darkred font-semibold rounded"
         /><br />
         
         <input
           type="email"
           placeholder="E-Mail"
           v-model="email"
-          class="bg-secondary mt-2 p-1 mr-2 border-2 border-brown-medium placeholder-brown-medium font-semibold rounded w-50"
+          class="bg-secondary mt-2 p-1 mr-2 border-2 border-hh-darkred placeholder-hh-darkred font-semibold rounded w-50"
         /><br />
         
         <AppButton @click="backToLoginBtnClicked">Doch einloggen</AppButton>
