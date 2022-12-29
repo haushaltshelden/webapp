@@ -62,6 +62,8 @@ export const useUserStore = defineStore('users', {
       this.user = user.myUser;
       localStorage.setItem('loggedIn', this.loggedIn);
       localStorage.setItem('user', JSON.stringify(this.user));
+
+      this.fetchPoints();
     },
 
     async fetchPoints() {
