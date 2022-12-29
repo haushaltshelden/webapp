@@ -9,7 +9,7 @@ import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
   uri: "https://api.trade-of-kings.com/haushaltshelden/graphql",
-  // uri: 'http://localhost:4000/graphql'
+  // uri: 'http://localhost:5000/graphql'
 });
 
 const errorHandler = onError(({ graphQLErrors }) => {
