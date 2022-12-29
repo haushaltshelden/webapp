@@ -7,7 +7,6 @@ import { onError } from "@apollo/client/link/error";
 import { useErrorsStore } from "../stores/useErrors";
 import { setContext } from "@apollo/client/link/context";
 import { useUserStore } from "@/stores/user";
-
 const currentUrl = window.location.href;
 
 const url = currentUrl.includes('localhost') ? 'http://localhost:5000/graphql' : 'https://api.trade-of-kings.com/haushaltshelden/graphql"'
@@ -18,13 +17,12 @@ const httpLink = createHttpLink({
 
 const errorHandler = onError(({ graphQLErrors }) => {
   if (graphQLErrors) {
-    useErrorsStore().$state = {
-      message: graphQLErrors[0].message,
-      category: graphQLErrors[0].extensions.category,
-      fields: graphQLErrors[0].extensions.validation ?? { input: {} },
-    };
-
+    const { throwError } = useErrorsStore();
     
+    throwError({
+      msg: 'Something went wrong with your user. Please login again.',
+      code: 0
+    })    
 
     const { logout } = useUserStore();
     logout();

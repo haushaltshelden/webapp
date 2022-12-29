@@ -17,6 +17,7 @@
     <AppButton @click="leaveHousehold">Haushalt verlassen</AppButton>
   </div>
   <AppButton @click="logout">Ausloggen</AppButton>
+  <div class="text-xs mt-1">Version: 0.0.4</div>
   </div>
 </template>
 

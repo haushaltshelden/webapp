@@ -4,6 +4,7 @@
     <span class="mx-3" @click="btnClicked('challenges')" v-if="user.household">Aufgaben</span>
     <span class="mx-3" @click="btnClicked('rewards')" v-if="user.household">Belohnungen</span>
   </div>
+  
 </template>
 
 <script setup>
