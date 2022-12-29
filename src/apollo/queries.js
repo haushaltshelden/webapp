@@ -9,6 +9,14 @@ export const myUser = gql`
   }
 `;
 
+export const fetchPoints = gql`
+  query {
+    myUser {
+      points
+    }
+  }
+`;
+
 export const getHouseholds = gql`
   query {
     getHouseholds {

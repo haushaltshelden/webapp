@@ -72,9 +72,9 @@ import AppButton from './AppButton.vue';
 const { login, createUser } = useUserStore();
 const { registrationSuccess } = storeToRefs(useUserStore())
 
-const username = ref('admin');
-const password = ref('test123');
-const email = ref('admin@test.de');
+const username = ref('');
+const password = ref('');
+const email = ref('');
 
 const register = ref(false);
 

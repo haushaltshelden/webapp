@@ -10,9 +10,8 @@
       </div> -->
     </div>
     <div>
-      <AppButton @click="doneBtnClicked" class="mt-1 max-h-full"
-        >Einlösen</AppButton
-      >
+      <AppButton @click="doneBtnClicked" class="mt-1 max-h-full" v-if="reward.costs < points">Einlösen</AppButton>
+      <AppButton class="mt-1 max-h-full" v-else>Zu wenig Punkte</AppButton>
     </div>
     <div
       class="absolute left-0 -mt-5 -ml-2 rounded-full bg-hh-red px-2 py-1 text-white"
@@ -23,11 +22,14 @@
 </template>
 
 <script setup>
+import { collectReward } from '@/apollo/mutations';
+import { storeToRefs } from 'pinia';
+import { useUserStore } from '@/stores/user';
+import apolloClient from '@/plugins/apollo';
+import AppButton from '../General/AppButton.vue';
 import moment from 'moment';
 
-import AppButton from '../General/AppButton.vue';
-import { collectReward } from '@/apollo/mutations';
-import apolloClient from '@/plugins/apollo';
+const { points } = storeToRefs(useUserStore());
 
 const props = defineProps({
   reward: Object,

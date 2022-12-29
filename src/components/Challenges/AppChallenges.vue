@@ -1,6 +1,7 @@
 <template>
-  <div class="flex justify-center border-b-4 border-hh-darkred py-2">
+  <div class="flex justify-center border-b-4 border-hh-darkred py-2 relative">
     Aufgaben
+    <AppPoints class="absolute right-2 text-xs"/>
   </div>
   <AppChallenge
     v-for="challenge in challenges"
@@ -18,14 +19,16 @@
 </template>
 
 <script setup>
-import AppChallengeCreate from './AppChallengeCreate.vue';
-import AppChallenge from './AppChallenge.vue';
-
-import apolloClient from '@/plugins/apollo';
 import { getChallenges } from '@/apollo/queries';
-
 import { ref } from 'vue';
+import { useUserStore } from '@/stores/user';
+import apolloClient from '@/plugins/apollo';
 import AppButton from '../General/AppButton.vue';
+import AppChallenge from './AppChallenge.vue';
+import AppChallengeCreate from './AppChallengeCreate.vue';
+import AppPoints from '../Points/AppPoints.vue';
+
+const { fetchPoints } = useUserStore();
 
 const createDialogOpen = ref(false);
 
@@ -45,5 +48,7 @@ const challengeDone = async () => {
   });
 
   challenges.value = data.getChallenges;
+
+  fetchPoints();  
 };
 </script>

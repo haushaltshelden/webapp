@@ -6,7 +6,7 @@
       <div><span class="text-primary">Name: </span>{{ challenge.name }}</div>
       <div v-if="challenge.last_done">
         <span class="text-primary">Zuletzt erledigt: </span
-        >{{ moment(challenge.last_done).fromNow() }}
+        >{{ moment(challenge.last_done).subtract(1, 'second').fromNow() }}
       </div>
     </div>
     <div>

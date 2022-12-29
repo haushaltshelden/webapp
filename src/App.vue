@@ -21,8 +21,11 @@ import { useUserStore } from './stores/user';
 import { useErrorsStore } from './stores/useErrors';
 import './assets/tailwind.css';
 
+const { fetchPoints } = useUserStore();
 const { loggedIn } = storeToRefs(useUserStore());
 const { message, code } = storeToRefs(useErrorsStore());
+
+fetchPoints();
 </script>
 
 <style>

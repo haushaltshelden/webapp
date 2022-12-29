@@ -1,14 +1,15 @@
 import { defineStore } from 'pinia';
 import apolloClient from '../plugins/apollo';
 import { loginUser, createUser, leaveHousehold } from '@/apollo/mutations';
-import { getMyHousehold, myUser } from '@/apollo/queries';
+import { getMyHousehold, myUser, fetchPoints } from '@/apollo/queries';
 import { useErrorsStore } from './useErrors';
 
 export const useUserStore = defineStore('users', {
   state: () => ({
     loggedIn: localStorage.getItem('loggedIn') ?? false,
     user: JSON.parse(localStorage.getItem('user')),
-    registrationSuccess: false
+    registrationSuccess: false,
+    points: 0
   }),
 
   actions: {
@@ -22,7 +23,7 @@ export const useUserStore = defineStore('users', {
 
     async getMyHousehold() {
       const { data } = await apolloClient.query({ query: getMyHousehold })
-      this.user.household = data.getMyHousehold._id
+      if (data.getMyHousehold) this.user.household = data.getMyHousehold._id
     },
 
     async login(credentials) {
@@ -63,6 +64,15 @@ export const useUserStore = defineStore('users', {
       localStorage.setItem('user', JSON.stringify(this.user));
     },
 
+    async fetchPoints() {
+      const { data } = await apolloClient.query({
+        query: fetchPoints,
+        fetchPolicy: 'no-cache',
+      });
+
+      this.points = data.myUser.points;
+    },
+
     async logout() {
       localStorage.removeItem('access-token');
       localStorage.removeItem('user');
@@ -70,6 +80,8 @@ export const useUserStore = defineStore('users', {
 
       this.loggedIn = false;
       this.user = null;
+      this.registrationSuccess = false;
+      this.points = null;
 
       await apolloClient.resetStore();
     },

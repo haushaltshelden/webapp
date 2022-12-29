@@ -35,7 +35,9 @@ const btnClicked = async () => {
   });
 
   if (data.createHousehold.success) {
-    user.value.household = 'test'
+    const { getMyHousehold } = useUserStore();
+
+    getMyHousehold();
   }
 };
 </script>
