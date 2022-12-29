@@ -9,7 +9,7 @@ import { setContext } from "@apollo/client/link/context";
 import { useUserStore } from "@/stores/user";
 const currentUrl = window.location.href;
 
-const url = currentUrl.includes('localhost') ? 'http://localhost:5000/graphql' : 'https://api.trade-of-kings.com/haushaltshelden/graphql"'
+const url = currentUrl.includes('localhost') ? 'http://localhost:5000/graphql' : 'https://api.trade-of-kings.com/haushaltshelden/graphql'
 
 const httpLink = createHttpLink({
   uri: url
