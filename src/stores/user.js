@@ -52,18 +52,21 @@ export const useUserStore = defineStore('users', {
     },
 
     async fetchUser() {
-      const user = (
-        await apolloClient.query({
-          query: myUser,
-        })
-      ).data;
-
-      this.loggedIn = true;
-      this.user = user.myUser;
-      localStorage.setItem('loggedIn', this.loggedIn);
-      localStorage.setItem('user', JSON.stringify(this.user));
-
-      this.fetchPoints();
+      
+        const user = (
+          await apolloClient.query({
+            query: myUser,
+          })
+        ).data;
+  
+        this.loggedIn = true;
+        this.user = user.myUser;
+        localStorage.setItem('loggedIn', this.loggedIn);
+        localStorage.setItem('user', JSON.stringify(this.user));
+  
+        this.fetchPoints();
+        this.getMyHousehold();
+      
     },
 
     async fetchPoints() {

@@ -6,19 +6,30 @@ import {
 import { onError } from "@apollo/client/link/error";
 import { useErrorsStore } from "../stores/useErrors";
 import { setContext } from "@apollo/client/link/context";
+import { useUserStore } from "@/stores/user";
+
+const currentUrl = window.location.href;
+
+const url = currentUrl.includes('localhost') ? 'http://localhost:5000/graphql' : 'https://api.trade-of-kings.com/haushaltshelden/graphql"'
 
 const httpLink = createHttpLink({
-  uri: "https://api.trade-of-kings.com/haushaltshelden/graphql",
-  // uri: 'http://localhost:5000/graphql'
+  uri: url
 });
 
 const errorHandler = onError(({ graphQLErrors }) => {
-  if (graphQLErrors)
+  if (graphQLErrors) {
     useErrorsStore().$state = {
       message: graphQLErrors[0].message,
       category: graphQLErrors[0].extensions.category,
       fields: graphQLErrors[0].extensions.validation ?? { input: {} },
     };
+
+    
+
+    const { logout } = useUserStore();
+    logout();
+  }
+    
 });
 
 const authLink = setContext((_, { headers }) => {

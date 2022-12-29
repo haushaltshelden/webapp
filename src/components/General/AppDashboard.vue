@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-12 bg-primary min-h-[94.3vh]">
+  <div class="mb-12 bg-primary min-h-[94.3vh] pb-5">
     <AppOverview v-if="currentPage === 'overview'"/>
     <AppChallenges v-if="currentPage === 'challenges'" />
     <AppRewards v-if="currentPage === 'rewards'" />

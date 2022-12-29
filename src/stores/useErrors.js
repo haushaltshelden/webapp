@@ -15,7 +15,7 @@ export const useErrorsStore = defineStore('errors', {
         setTimeout(() => {
           this.message = null;
           this.code = null;
-        }, 5000);
+        }, 3000);
       }
     },
   },

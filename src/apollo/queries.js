@@ -5,6 +5,7 @@ export const myUser = gql`
     myUser {
       _id
       name
+      household
     }
   }
 `;
