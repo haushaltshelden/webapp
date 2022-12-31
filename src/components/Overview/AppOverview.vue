@@ -20,7 +20,7 @@
           :challenge="lastChallenge"
         />
       <div>
-        <div class="ml-3">Erhaltende Belohnungen</div>
+        <div class="ml-3">Erhaltene Belohnungen</div>
         <AppOverviewLastRewards
           v-for="lastReward in getLastRewardsResult.getLastRewards"
           :reward="lastReward"
