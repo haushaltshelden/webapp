@@ -26,7 +26,7 @@ export const getHouseholds = gql`
       _id
     }
   }
-`
+`;
 
 export const getMyHousehold = gql`
   query {
@@ -36,7 +36,7 @@ export const getMyHousehold = gql`
       _id
     }
   }
-`
+`;
 
 export const getChallenges = gql`
   query {
@@ -47,7 +47,7 @@ export const getChallenges = gql`
       _id
     }
   }
-`
+`;
 
 export const getRewards = gql`
   query {
@@ -57,4 +57,36 @@ export const getRewards = gql`
       _id
     }
   }
-`
+`;
+
+export const getLastChallenges = gql`
+  query {
+    getLastChallenges {
+      challenge {
+        name
+        points
+      }
+      points
+      user {
+        name
+      }
+      createdAt
+    }
+  }
+`;
+
+export const getLastRewards = gql`
+  query {
+    getLastRewards {
+      reward {
+        name
+        costs
+      }
+      costs
+      user {
+        name
+      }
+      createdAt
+    }
+  }
+`;

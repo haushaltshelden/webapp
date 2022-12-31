@@ -19,6 +19,11 @@ export const useUserStore = defineStore('users', {
       })
 
       if (data.leaveHousehold.success) this.user.household = null;
+
+      const ls = JSON.parse(localStorage.getItem('user'));
+      ls.household = null;
+
+      localStorage.setItem('user', JSON.stringify(ls));
     },
 
     async getMyHousehold() {
