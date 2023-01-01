@@ -33,6 +33,10 @@ export const getMyHousehold = gql`
     getMyHousehold {
       name
       membercount
+      members {
+        name
+        points
+      }
       _id
     }
   }

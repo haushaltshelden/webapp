@@ -1,22 +1,22 @@
-import { defineStore } from 'pinia';
 import apolloClient from '../plugins/apollo';
+import { useErrorsStore } from './useErrors';
 import { loginUser, createUser, leaveHousehold } from '@/apollo/mutations';
 import { getMyHousehold, myUser, fetchPoints } from '@/apollo/queries';
-import { useErrorsStore } from './useErrors';
+import { defineStore } from 'pinia';
 
 export const useUserStore = defineStore('users', {
   state: () => ({
     loggedIn: localStorage.getItem('loggedIn') ?? false,
     user: JSON.parse(localStorage.getItem('user')),
     registrationSuccess: false,
-    points: 0
+    points: 0,
   }),
 
   actions: {
     async leaveHousehold() {
       const { data } = await apolloClient.mutate({
-        mutation: leaveHousehold
-      })
+        mutation: leaveHousehold,
+      });
 
       if (data.leaveHousehold.success) this.user.household = null;
 
@@ -27,8 +27,8 @@ export const useUserStore = defineStore('users', {
     },
 
     async getMyHousehold() {
-      const { data } = await apolloClient.query({ query: getMyHousehold })
-      if (data.getMyHousehold) this.user.household = data.getMyHousehold._id
+      const { data } = await apolloClient.query({ query: getMyHousehold });
+      if (data.getMyHousehold) this.user.household = data.getMyHousehold._id;
     },
 
     async login(credentials) {
@@ -43,7 +43,7 @@ export const useUserStore = defineStore('users', {
 
       if (!login.loginUser.success) {
         const { throwError } = useErrorsStore();
-        throwError(login.loginUser)
+        throwError(login.loginUser);
 
         return;
       }
@@ -57,21 +57,19 @@ export const useUserStore = defineStore('users', {
     },
 
     async fetchUser() {
-      
-        const user = (
-          await apolloClient.query({
-            query: myUser,
-          })
-        ).data;
-  
-        this.loggedIn = true;
-        this.user = user.myUser;
-        localStorage.setItem('loggedIn', this.loggedIn);
-        localStorage.setItem('user', JSON.stringify(this.user));
-  
-        this.fetchPoints();
-        this.getMyHousehold();
-      
+      const user = (
+        await apolloClient.query({
+          query: myUser,
+        })
+      ).data;
+
+      this.loggedIn = true;
+      this.user = user.myUser;
+      localStorage.setItem('loggedIn', this.loggedIn);
+      localStorage.setItem('user', JSON.stringify(this.user));
+
+      this.fetchPoints();
+      this.getMyHousehold();
     },
 
     async fetchPoints() {
@@ -106,7 +104,7 @@ export const useUserStore = defineStore('users', {
 
       if (!register.createUser.success) {
         const { throwError } = useErrorsStore();
-        throwError(register.createUser)
+        throwError(register.createUser);
       } else {
         this.registrationSuccess = true;
       }

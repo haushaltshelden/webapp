@@ -10,8 +10,7 @@
       </div>
       <div>
         <div>
-          <span class="text-primary">Aufgabe: </span
-          >{{ challenge.challenge.name }}
+          {{ challenge.challenge.name }}
         </div>
       </div>
       <div

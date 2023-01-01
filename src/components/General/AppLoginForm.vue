@@ -23,7 +23,7 @@
           Account erfolgreich registriert!
         </div>
 
-        <AppButton @click="loginBtnClicked" class="bg-secondary">Einloggen</AppButton>
+        <AppButton @click="loginBtnClicked" class="bg-secondary mt-3">Einloggen</AppButton>
         <AppButton @click="registerUserForm" class="ml-3 bg-secondary">Account erstellen</AppButton>
         <div class="mt-2">Passwort vergessen</div>
       </form>
@@ -55,7 +55,7 @@
           class="bg-secondary mt-2 p-1 mr-2 border-2 border-hh-darkred placeholder-hh-darkred font-semibold rounded w-50"
         /><br />
         
-        <AppButton @click="backToLoginBtnClicked">Doch einloggen</AppButton>
+        <AppButton @click="backToLoginBtnClicked" class="mt-3">Doch einloggen</AppButton>
         <AppButton @click="registerBtnClicked" class="ml-3">Account erstellen</AppButton>
       </form>
     </div>
